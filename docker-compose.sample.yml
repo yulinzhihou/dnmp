@@ -160,19 +160,19 @@ services:
     image: yulinzhihou/mysql80:v1.0
     container_name: mysql
     ports:
-      - "${MYSQL_HOST_PORT}:3306"
+      - "${MYSQL80_HOST_PORT}:3306"
     volumes:
-      - ${MYSQL_CONF_FILE}:/etc/mysql/conf.d/mysql.cnf:ro
+      - ${MYSQL80_CONF_FILE}:/etc/mysql/conf.d/mysql.cnf:ro
       - ${DATA_DIR}/mysql:/var/lib/mysql/:rw
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL80_ROOT_PASSWORD}"
       TZ: "$TZ"
     networks:
       - default
 
   redis:
-    image: yulinzhihou/redis:v1.0
+    image: yulinzhihou/redis6:v1.0
     container_name: redis
     ports:
       - "${REDIS_HOST_PORT}:6379"
@@ -194,6 +194,5 @@ services:
     restart: always
     networks:
       - default
-
 networks:
     default:
