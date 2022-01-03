@@ -8,11 +8,13 @@ services:
       - "${NGINX_HTTPS_HOST_PORT}:443"
     volumes:
       - ${SOURCE_DIR}:/www/:rw
-      - ${NGINX_SSL_CERTIFICATE_DIR}:/ssl:rw
+      - ${NGINX_SSL_CERTIFICATE_DIR}:/etc/nginx/ssl:rw
+      - ${NGINX_REWRITE_DIR}:/etc/nginx/rewrite/:rw
+      - ${NGINX_VHOSTS_DIR}:/etc/nginx/vhosts/:rw
       - ${NGINX_CONFD_DIR}:/etc/nginx/conf.d/:rw
       - ${NGINX_CONF_FILE}:/etc/nginx/nginx.conf:ro
-      - ${NGINX_FASTCGI_PHP_CONF}:/etc/nginx/fastcgi-php.conf:ro
-      - ${NGINX_FASTCGI_PARAMS}:/etc/nginx/fastcgi_params:ro
+      - ${NGINX_FASTCGI_PHP_CONF}:/etc/nginx/conf.d/fastcgi-php.conf:ro
+      - ${NGINX_FASTCGI_PARAMS}:/etc/nginx/conf.d/fastcgi_params:ro
       - ${NGINX_LOG_DIR}:/var/log/nginx/:rw
     environment:
       TZ: "$TZ"
@@ -186,13 +188,14 @@ services:
     networks:
       - default
 
-  node:
-    image: yulinzhihou/node16:v1.0
-    container_name: node
-    volumes:
-      - ${SOURCE_DIR}:/www/:rw
-    restart: always
-    networks:
-      - default
+  # node:
+  #   image: yulinzhihou/node16:v1.0
+  #   container_name: node
+  #   volumes:
+  #     - ${SOURCE_DIR}:/www/:rw
+  #   restart: always
+  #   networks:
+  #     - default
+  
 networks:
     default:

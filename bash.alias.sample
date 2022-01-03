@@ -14,6 +14,58 @@ alias dredis='docker exec -it redis /bin/sh'
 alias down='cd ~/websites && docker-compose down'
 alias up='cd ~/websites && docker-compose up -d'
 
+# redis
+redis-cli () {
+    tty=
+    tty -s && tty=--tty
+    docker run \
+        $tty \
+        --interactive \
+        --rm \
+        --volume $PWD:/www:rw \
+        --workdir /www \
+        redis redis-cli "$@"
+}
+
+# nginx
+nginx () {
+    tty=
+    tty -s && tty=--tty
+    docker run \
+        $tty \
+        --interactive \
+        --rm \
+        --volume $PWD:/www:rw \
+        --workdir /www \
+        nginx nginx "$@"
+}
+
+# php81 cli
+php81 () {
+    tty=
+    tty -s && tty=--tty
+    docker run \
+        $tty \
+        --interactive \
+        --rm \
+        --volume $PWD:/www:rw \
+        --workdir /www \
+        php81 php "$@"
+}
+
+# php74 cli
+php80 () {
+    tty=
+    tty -s && tty=--tty
+    docker run \
+        $tty \
+        --interactive \
+        --rm \
+        --volume $PWD:/www:rw \
+        --workdir /www \
+        php80 php "$@"
+}
+
 # php74 cli
 php74 () {
     tty=
@@ -158,6 +210,7 @@ composer71 () {
         --workdir /app \
         php71 composer "$@"
 }
+
 # php70 composer
 composer70 () {
     tty=
@@ -173,32 +226,3 @@ composer70 () {
         php70 composer "$@"
 }
 
-# php5.6 composer
-composer56 () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --user www-data:www-data \
-        --volume ~/dnmp/data/composer:/tmp/composer \
-        --volume $(pwd):/app \
-        --workdir /app \
-        php56 composer "$@"
-}
-
-# php5.4 composer
-composer54 () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --user www-data:www-data \
-        --volume ~/dnmp/data/composer:/tmp/composer \
-        --volume $(pwd):/app \
-        --workdir /app \
-        php54 composer "$@"
-}
