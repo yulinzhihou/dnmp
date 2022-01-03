@@ -1,7 +1,7 @@
 version: "3"
 services:
   nginx:
-    image: yulinzhihou/nginx:v1.0
+    image: yulinzhihou/nginx:v1.1
     container_name: nginx
     ports:
       - "${NGINX_HTTP_HOST_PORT}:80"
@@ -13,8 +13,8 @@ services:
       - ${NGINX_VHOSTS_DIR}:/etc/nginx/vhosts/:rw
       - ${NGINX_CONFD_DIR}:/etc/nginx/conf.d/:rw
       - ${NGINX_CONF_FILE}:/etc/nginx/nginx.conf:ro
-      - ${NGINX_FASTCGI_PHP_CONF}:/etc/nginx/conf.d/fastcgi-php.conf:ro
-      - ${NGINX_FASTCGI_PARAMS}:/etc/nginx/conf.d/fastcgi_params:ro
+      # - ${NGINX_FASTCGI_PHP_CONF}:/etc/nginx/conf.d/fastcgi-php.conf:ro
+      # - ${NGINX_FASTCGI_PARAMS}:/etc/nginx/conf.d/fastcgi_params:ro
       - ${NGINX_LOG_DIR}:/var/log/nginx/:rw
     environment:
       TZ: "$TZ"
