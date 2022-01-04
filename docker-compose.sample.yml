@@ -22,8 +22,25 @@ services:
     networks:
       - default
 
+  php54:
+    image: yulinzhihou/php54:v1.1
+    container_name: php54
+    expose:
+      - 9000
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${PHP54_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+      - ${PHP54_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ${PHP54_LOG_DIR}:/var/log/php
+      - ${DATA_DIR}/composer:/tmp/composer
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
+
   php56:
-    image: yulinzhihou/php56:v1.0
+    image: yulinzhihou/php56:v1.1
     container_name: php56
     expose:
       - 9000
@@ -40,7 +57,7 @@ services:
       - default
 
   php70:
-    image: yulinzhihou/php70:v1.0
+    image: yulinzhihou/php70:v1.1
     container_name: php70
     expose:
       - 9000
@@ -57,7 +74,7 @@ services:
       - default
 
   php71:
-    image: yulinzhihou/php71:v1.0
+    image: yulinzhihou/php71:v1.1
     container_name: php71
     expose:
       - 9000
@@ -74,7 +91,7 @@ services:
       - default
       
   php72:
-    image: yulinzhihou/php72:v1.0
+    image: yulinzhihou/php72:v1.1
     container_name: php72
     expose:
       - 9000
@@ -91,7 +108,7 @@ services:
       - default
 
   php73:
-    image: yulinzhihou/php73:v1.0
+    image: yulinzhihou/php73:v1.1
     container_name: php73
     expose:
       - 9000
@@ -108,7 +125,7 @@ services:
       - default
 
   php74:
-    image: yulinzhihou/php74:v1.0
+    image: yulinzhihou/php74:v1.1
     container_name: php74
     expose:
       - 9000
@@ -125,7 +142,7 @@ services:
       - default
 
   php80:
-    image: yulinzhihou/php80:v1.0
+    image: yulinzhihou/php80:v1.1
     container_name: php80
     expose:
       - 9000
@@ -142,7 +159,7 @@ services:
       - default
 
   php81:
-    image: yulinzhihou/php81:v1.0
+    image: yulinzhihou/php81:v1.1
     container_name: php81
     expose:
       - 9000
