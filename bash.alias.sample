@@ -28,12 +28,18 @@ alias rphp54='docker restart php54'
 alias rmysql='docker restart mysql'
 alias rredis='docker restart redis'
 
-
 # redis
 redis-cli() {
     tty=
     tty -s && tty=--tty
-    docker exec $tty --interactive --workdir /www redis redis-cli "$@"
+    docker exec $tty --interactive redis redis-cli "$@"
+}
+
+# mysql client 
+mysql() {
+    tty=
+    tty -s && tty=--tty
+    docker exec $tty --interactive mysql mysql "$@"
 }
 
 # nginx
