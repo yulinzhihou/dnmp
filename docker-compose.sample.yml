@@ -16,6 +16,7 @@ services:
       # - ${NGINX_FASTCGI_PHP_CONF}:/etc/nginx/conf.d/fastcgi-php.conf:ro
       # - ${NGINX_FASTCGI_PARAMS}:/etc/nginx/conf.d/fastcgi_params:ro
       - ${NGINX_LOG_DIR}:/var/log/nginx/:rw
+      - ${SCRIPTS_DIR}:/tmp/:rw
     environment:
       TZ: "$TZ"
     restart: always
@@ -33,6 +34,7 @@ services:
       - ${PHP54_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
       - ${PHP54_LOG_DIR}:/var/log/php
       - ${DATA_DIR}/composer:/tmp/composer
+      - ${SCRIPTS_DIR}:/tmp/:rw
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -50,6 +52,7 @@ services:
       - ${PHP56_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
       - ${PHP56_LOG_DIR}:/var/log/php
       - ${DATA_DIR}/composer:/tmp/composer
+      - ${SCRIPTS_DIR}:/tmp/:rw
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -67,6 +70,7 @@ services:
       - ${PHP70_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
       - ${PHP70_LOG_DIR}:/var/log/php
       - ${DATA_DIR}/composer:/tmp/composer
+      - ${SCRIPTS_DIR}:/tmp/:rw
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -84,6 +88,7 @@ services:
       - ${PHP71_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
       - ${PHP71_LOG_DIR}:/var/log/php
       - ${DATA_DIR}/composer:/tmp/composer
+      - ${SCRIPTS_DIR}:/tmp/:rw
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -101,6 +106,7 @@ services:
       - ${PHP72_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
       - ${PHP72_LOG_DIR}:/var/log/php
       - ${DATA_DIR}/composer:/tmp/composer
+      - ${SCRIPTS_DIR}:/tmp/:rw
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -118,6 +124,7 @@ services:
       - ${PHP73_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
       - ${PHP73_LOG_DIR}:/var/log/php
       - ${DATA_DIR}/composer:/tmp/composer
+      - ${SCRIPTS_DIR}:/tmp/:rw
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -135,6 +142,7 @@ services:
       - ${PHP74_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
       - ${PHP74_LOG_DIR}:/var/log/php
       - ${DATA_DIR}/composer:/tmp/composer
+      - ${SCRIPTS_DIR}:/tmp/:rw
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -152,6 +160,7 @@ services:
       - ${PHP80_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
       - ${PHP80_LOG_DIR}:/var/log/php
       - ${DATA_DIR}/composer:/tmp/composer
+      - ${SCRIPTS_DIR}:/tmp/:rw
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -169,6 +178,7 @@ services:
       - ${PHP81_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
       - ${PHP81_LOG_DIR}:/var/log/php
       - ${DATA_DIR}/composer:/tmp/composer
+      - ${SCRIPTS_DIR}:/tmp/:rw
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -183,6 +193,7 @@ services:
     volumes:
       - ${MYSQL80_CONF_FILE}:/etc/mysql/conf.d/mysql.cnf:ro
       - ${DATA_DIR}/mysql:/var/lib/mysql/:rw
+      - ${SCRIPTS_DIR}:/tmp/:rw
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: "${MYSQL80_ROOT_PASSWORD}"
@@ -198,6 +209,7 @@ services:
     volumes:
       - ${REDIS_CONF_FILE}:/etc/redis.conf:ro
       - ${DATA_DIR}/redis:/data/:rw
+      - ${SCRIPTS_DIR}:/tmp/:rw
     restart: always
     entrypoint: ["redis-server", "/etc/redis.conf"]
     environment:

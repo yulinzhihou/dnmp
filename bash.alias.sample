@@ -112,4 +112,11 @@ php54 () {
     docker exec $tty --interactive --workdir /www php54 php "$@"
 }
 
+# common script
+host2nginx() {
+    tty=
+    tty -s && tty=--tty
+    docker exec $tty --interactive $1 sh /tmp/host2nginx.sh $2
+}
+
 # yulinzhihou-dnmp alias variable end
