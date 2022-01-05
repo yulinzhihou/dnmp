@@ -1,4 +1,4 @@
-# dnmp alias
+# yulinzhihou-dnmp alias variable start
 alias dnginx='docker exec -it nginx /bin/sh'
 alias dphp81='docker exec -it php81 /bin/sh'
 alias dphp80='docker exec -it php80 /bin/sh'
@@ -30,214 +30,80 @@ alias rredis ='docker restart redis'
 
 
 # redis
-redis-cli () {
+redis-cli() {
     tty=
     tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --volume $PWD:/www:rw \
-        --workdir /www \
-        redis redis-cli "$@"
+    docker exec $tty --interactive --workdir /www redis redis-cli "$@"
 }
 
 # nginx
 nginx () {
     tty=
     tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --volume $PWD:/www:rw \
-        --workdir /www \
-        nginx nginx "$@"
+    docker exec $tty --interactive --workdir /www nginx nginx "$@"
 }
 
 # php81 cli
 php81 () {
     tty=
     tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --volume $PWD:/www:rw \
-        --workdir /www \
-        php81 php "$@"
+    docker exec $tty --interactive --workdir /www php81 php "$@"
 }
 
-# php74 cli
-php80 () {
+# php80 cli
+php80() {
     tty=
     tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --volume $PWD:/www:rw \
-        --workdir /www \
-        php80 php "$@"
+    docker exec $tty --interactive --workdir /www php80 php "$@"
 }
 
 # php74 cli
 php74 () {
     tty=
     tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --volume $PWD:/www:rw \
-        --workdir /www \
-        php74 php "$@"
+    docker exec $tty --interactive --workdir /www php74 php "$@"
 }
 
-php73 () {
+# php73 cli
+php73(){
     tty=
     tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --volume $PWD:/www:rw \
-        --workdir /www \
-        php73 php "$@"
-}
-php72 () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --volume $PWD:/www:rw \
-        --workdir /www \
-        php72 php "$@"
+    docker exec $tty --interactive --workdir /www php73 php "$@"
 }
 
-php71 () {
+# php72 cli
+php72() {
     tty=
     tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --volume $PWD:/www:rw \
-        --workdir /www \
-        php71 php "$@"
+    docker exec $tty --interactive --workdir /www php72 php "$@"
 }
+
+# php72 cli
+php71() {
+    tty=
+    tty -s && tty=--tty
+    docker exec $tty --interactive --workdir /www php71 php "$@"
+}
+
+# php72 cli
 php70 () {
     tty=
     tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --volume $PWD:/www:rw \
-        --workdir /www \
-        php70 php "$@"
+    docker exec $tty --interactive --workdir /www php70 php "$@"
 }
 
 # php5.6 cli
 php56 () {
     tty=
     tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --volume $PWD:/www:rw \
-        --workdir /www \
-        php56 php "$@"
+    docker exec $tty --interactive --workdir /www php56 php "$@"
 }
 
 # php5.4 cli
 php54 () {
     tty=
     tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --volume $PWD:/www:rw \
-        --workdir /www \
-        php54 php "$@"
+    docker exec $tty --interactive --workdir /www php54 php "$@"
 }
 
-# php74 composer
-composer74 () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --user www-data:www-data \
-        --volume ~/dnmp/data/composer:/tmp/composer \
-        --volume $(pwd):/app \
-        --workdir /app \
-        php74 composer "$@"
-}
-
-# php73 composer
-composer73 () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --user www-data:www-data \
-        --volume ~/dnmp/data/composer:/tmp/composer \
-        --volume $(pwd):/app \
-        --workdir /app \
-        php73 composer "$@"
-}
-
-# php72 composer
-composer72 () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --user www-data:www-data \
-        --volume ~/dnmp/data/composer:/tmp/composer \
-        --volume $(pwd):/app \
-        --workdir /app \
-        php72 composer "$@"
-}
-
-# php71 composer
-composer71 () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --user www-data:www-data \
-        --volume ~/dnmp/data/composer:/tmp/composer \
-        --volume $(pwd):/app \
-        --workdir /app \
-        php71 composer "$@"
-}
-
-# php70 composer
-composer70 () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --user www-data:www-data \
-        --volume ~/dnmp/data/composer:/tmp/composer \
-        --volume $(pwd):/app \
-        --workdir /app \
-        php70 composer "$@"
-}
-
+# yulinzhihou-dnmp alias variable end
