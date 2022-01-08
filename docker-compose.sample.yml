@@ -216,15 +216,19 @@ services:
       TZ: "$TZ"
     networks:
       - default
-
-  # node:
-  #   image: yulinzhihou/node16:v1.0
-  #   container_name: node
-  #   volumes:
-  #     - ${SOURCE_DIR}:/www/:rw
-  #   restart: always
-  #   networks:
-  #     - default
-  
+  node:
+    image: yulinzhihou/node16:v1.0
+    container_name: node
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${SCRIPTS_DIR}:/tmp/:rw
+    restart: always
+    entrypoint: sh
+    command:
+      - -c
+      - |
+        tail -f /dev/null
+    networks:
+      - default
 networks:
     default:

@@ -11,6 +11,7 @@ alias dphp56='docker exec -it php56 /bin/sh'
 alias dphp54='docker exec -it php54 /bin/sh'
 alias dmysql='docker exec -it mysql /bin/bash'
 alias dredis='docker exec -it redis /bin/sh'
+alias dnode='docker exec -it node /bin/sh'
 
 alias down='cd ~/websites && docker-compose down'
 alias up='cd ~/websites && docker-compose up -d'
@@ -27,6 +28,7 @@ alias rphp56='docker restart php56'
 alias rphp54='docker restart php54'
 alias rmysql='docker restart mysql'
 alias rredis='docker restart redis'
+alias rnode='docker restart node'
 
 # redis
 redis-cli() {
@@ -118,5 +120,12 @@ host2nginx() {
     tty -s && tty=--tty
     docker exec $tty --interactive $1 sh /tmp/host2nginx.sh $2
 }
+
+npm() {
+    tty=
+    tty -s && tty=--tty
+    docker exec $tty --interactive --workdir $PWD node npm "$@"
+}
+
 
 # yulinzhihou-dnmp alias variable end
