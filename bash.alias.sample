@@ -121,11 +121,18 @@ host2nginx() {
     docker exec $tty --interactive $1 sh /tmp/host2nginx.sh $2
 }
 
+# node script 
 npm() {
     tty=
     tty -s && tty=--tty
-    docker exec $tty --interactive --workdir $PWD node npm "$@"
+    docker exec $tty --interactive --workdir /www/front/`basename $PWD` node npm "$@"
 }
 
+# node yarn script
+yarn() {
+    tty=
+    tty -s && tty=--tty
+    docker exec $tty --interactive --workdir /www/front/`basename $PWD` node yarn "$@"
+}
 
 # yulinzhihou-dnmp alias variable end
