@@ -5,3 +5,6 @@ if [[ -n $1 ]]; then
     echo -e "${NGINX_IP}\t $1" >>/etc/hosts
 fi
 
+
+
+

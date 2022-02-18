@@ -62,7 +62,8 @@ php81 () {
 php80() {
     tty=
     tty -s && tty=--tty
-    docker exec $tty --interactive --workdir /www php80 php "$@"
+    dir=echo $PWD | awk 'BEGIN{res=""; FS="/";}{ for(i=NF-2;i<=NF;i++) res=(res"/"$i);} END{print res}'
+    docker exec $tty --interactive --workdir $dir php80 php "$@"
 }
 
 # php74 cli
